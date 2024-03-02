@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Disney+ clone",
@@ -14,7 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-white dark:bg-[#1A1C29]">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
